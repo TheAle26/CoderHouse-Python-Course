@@ -33,8 +33,7 @@ SECRET_KEY = 'django-insecure-(7@g5w*k#+vci#+#*ovb3ax3@j5$o2jm)t*c58^tu5cy3b^dzx
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["alejovincent26.pythonanywhere.com"]
-
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -85,14 +84,11 @@ WSGI_APPLICATION = 'ProyectoResto.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'HOST': 'alejovincent26.mysql.pythonanywhere-services.com',
-        'USER': 'alejovincent26',
-        'PASSWORD': '<tu-contraseña-aquí>',
-        'NAME': 'alejovincent26$default',
-        'CHARSET': 'utf8',
-    },
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
 }
+
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
@@ -129,7 +125,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
 STATIC_URL = 'static/'
-STATIC_ROOT = '/home/alejovincent26/myproject/static'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
@@ -140,11 +135,3 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 LOGIN_URL='/AppResto/login'
-
-try:
-    # Importar la configuración de desarrollo cuando el archivo esté
-    # disponible.
-    from settings_dev import *
-except ModuleNotFoundError:
-    # Si no está disponible, es porque se está corriendo en producción.
-    pass
